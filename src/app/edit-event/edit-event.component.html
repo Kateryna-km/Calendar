@@ -1,12 +1,13 @@
 <main>
-  <form (submit)="createEvent(Name, Date)">
-    <h2>New event:</h2>
+  <h2>Edit event</h2>
+
+  <form (submit)="editEvent(Name, Date)">
     <div class="row">
       <div class="col-25">
         <label for="name">Name:</label>
       </div>
       <div class="col-75">
-        <input type="text" id="name" name="name" class="input" placeholder="name" #Name>
+        <input type="text" id="name" name="name" class="input" placeholder="name" value="{{event['name']}}" #Name>
       </div>
     </div>
     <div class="row">
@@ -18,7 +19,8 @@
       </div>
     </div>
     <br>
-    <input type="submit" class="button" value="Create">
+    <input type="submit" class="button" value="Save">
+    <input type="submit" class="button" id="delete" value="Delete">
     <br><br>
   </form>
 </main>

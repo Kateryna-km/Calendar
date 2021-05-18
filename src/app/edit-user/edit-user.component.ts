@@ -32,7 +32,6 @@ export class EditUserComponent implements OnInit {
   getUser(id_user: string, headers: HttpHeaders): void {
     this.http.get<any>(this.baseURL + 'user/' + id_user, { headers })
       .subscribe(response => {
-        console.log(response);
         this.firstName = response['firstName'];
         this.lastName = response['lastName'];
         this.username = response['username'];
@@ -62,7 +61,6 @@ export class EditUserComponent implements OnInit {
     })
       .subscribe(response => {
         this.router.navigate(['/user/' + this.id]);
-        // console.log(response)
       });
     fName.value = '';
     lName.value = '';
@@ -78,7 +76,6 @@ export class EditUserComponent implements OnInit {
     this.http.delete(this.baseURL + 'user/delete', { headers: this.refresh_headers })
       .subscribe(response => {
         this.router.navigate(['/']);
-        // console.log(response)
       });
   }
 

@@ -5,6 +5,7 @@
   </h2>
   <a class="nav" (click)="logout()">Exit</a>
   <a class="nav" (click)="edit()">Edit</a>
+  <a class="nav" (click)="createEvent()">Create event</a>
 </nav>
 <main>
   <div class="row">
@@ -52,38 +53,15 @@
     </div>
     <div class="list_event">
       <h2>List of event</h2>
-      <div class="row">
+      <div class="row" *ngFor="let event of events">
         <div class="col-20">
-          <h3>My birthday</h3>
+          <h3>{{event['name']}}</h3>
         </div>
         <div class="col-40">
-          <a class="info" href=info_event.html>Info</a>
+          <a class="info" (click)="infoEvent(event['id'])">Info</a>
         </div>
       </div>
-      <div class="row">
-        <div class="col-20">
-          <h3>Second event</h3>
-        </div>
-        <div class="col-40">
-          <a class="info" href=#>Info</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-20">
-          <h3>Third event</h3>
-        </div>
-        <div class="col-40">
-          <a class="info" href=#>Info</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-20">
-          <h3>Fourth event</h3>
-        </div>
-        <div class="col-40">
-          <a class="info" href=#>Info</a>
-        </div>
-      </div>
+
     </div>
   </div>
 </main>

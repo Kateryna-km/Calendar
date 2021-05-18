@@ -1,0 +1,29 @@
+<nav>
+  <h2 id="nav">
+    <i class="fas fa-calendar-day"></i>
+    <span class="nav">My event</span>
+  </h2>
+  <a class="nav" id="delete" (click)="deleteEvent()">Delete</a>
+  <a class="nav" (click)="editEvent()">Edit</a>
+  <a class="nav" (click)="addUser()">Invite users</a>
+</nav>
+<main>
+  <div class="event">
+    <div class="row">
+      <div class="col-20">
+        <h3>Name</h3>
+      </div>
+      <div class="col-40">
+        <p *ngFor="let one of event">{{one['name']}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-20">
+        <h3>Date</h3>
+      </div>
+      <div class="col-40">
+        <p *ngFor="let one of event">{{one['date']}}</p>
+      </div>
+    </div>
+  </div>
+</main>

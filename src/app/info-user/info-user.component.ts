@@ -1,14 +1,9 @@
 import { Injectable } from '@angular/core';
-import {observable, Observable, throwError} from 'rxjs';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {templateJitUrl} from '@angular/compiler';
 import {Router} from '@angular/router';
-
-// const id = localStorage.getItem('id');
-// const access_token = localStorage.getItem('access_token');
-// const refresh_token = localStorage.getItem('refresh_token');
 
 @Component({
   selector: 'app-info-user',
@@ -26,20 +21,20 @@ export class InfoUserComponent implements OnInit {
   username: string;
   email: string;
   phone: string;
+  events: string[];
+  headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.access_token });
   baseURL = 'http://127.0.0.1:8000/';
 
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
-    // console.log(this.id, this.access_token, this.refresh_token)
-    const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.access_token });
-    this.getUser(this.id, headers);
+    this.getUser(this.id);
+    this.getEvent();
   }
 
-  getUser(id_user: string, headers: HttpHeaders): void {
-    this.http.get<any>(this.baseURL + 'user/' + id_user, { headers })
+  getUser(id_user: string): void {
+    this.http.get<any>(this.baseURL + 'user/' + id_user, { headers: this.headers })
       .subscribe(response => {
-        // console.log(response);
         this.firstName = response['firstName'];
         this.lastName = response['lastName'];
         this.username = response['username'];
@@ -57,6 +52,22 @@ export class InfoUserComponent implements OnInit {
 
   edit(): void {
     this.router.navigate(['/user/' + localStorage.getItem('id') + '/edit']);
+  }
+
+  createEvent(): void {
+    this.router.navigate(['/event']);
+  }
+
+  getEvent(): void {
+    this.http.get<any>(this.baseURL + 'event/list', { headers: this.headers })
+      .subscribe(response => {
+        this.events = response;
+      })
+  }
+
+  infoEvent(id): void {
+    localStorage.setItem('id_event', id);
+    this.router.navigate(['/event/' + id]);
   }
 
 }

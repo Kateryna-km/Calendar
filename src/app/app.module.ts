@@ -11,6 +11,10 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { InfoUserComponent } from './info-user/info-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { CreateEventComponent } from './create-event/create-event.component';
+import { InfoEventComponent } from './info-event/info-event.component';
+import { EditEventComponent } from './edit-event/edit-event.component';
+import { UserToEventComponent } from './user-to-event/user-to-event.component';
+import { IndexComponent } from './index/index.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { CreateEventComponent } from './create-event/create-event.component';
     LoginComponent,
     InfoUserComponent,
     EditUserComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    InfoEventComponent,
+    EditEventComponent,
+    UserToEventComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
