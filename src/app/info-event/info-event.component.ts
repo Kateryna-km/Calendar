@@ -18,17 +18,28 @@ export class InfoEventComponent implements OnInit {
   refresh_headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.refresh_token });
   baseURL = 'http://127.0.0.1:8000/';
 
+  status: number;
+
+
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
-    this.getEvent();
+    this.status = this.getEvent();
+    console.log(this.status);
   }
 
-  getEvent(): void {
-    this.http.get<any>(this.baseURL + 'event/' + this.id_event, { headers: this.access_headers })
+  getEvent(): number {
+    let st: number;
+    this.http.get<any>(this.baseURL + 'event/' + this.id_event, {
+      headers: this.access_headers,
+      observe: 'response'
+    })
       .subscribe(response => {
-        this.event = [response];
-      })
+        this.event = [response.body];
+        st = response.status;
+        console.log(st);
+      });
+    return st;
   }
 
   deleteEvent(): void {

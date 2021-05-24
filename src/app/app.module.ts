@@ -1,5 +1,4 @@
 import {HttpClientModule} from '@angular/common/http';
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
@@ -15,6 +14,8 @@ import { InfoEventComponent } from './info-event/info-event.component';
 import { EditEventComponent } from './edit-event/edit-event.component';
 import { UserToEventComponent } from './user-to-event/user-to-event.component';
 import { IndexComponent } from './index/index.component';
+
+import {NgModule} from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,6 @@ import { IndexComponent } from './index/index.component';
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
